@@ -1,0 +1,75 @@
+<html>
+
+<head th:replace="~{base :: head}"></head>
+<title>Consultar clientes</title>
+<body>
+    
+
+    <div class="container">
+        <div th:replace="~{base :: titulo('Consulta de clientes')}"></div>
+        <nav th:replace="~{base :: buttons}"></nav>
+
+        <form action="busca" method="POST" class="form-control me-3">
+            <div class="d-flex mt-3">
+                <div class="form-check me-3 mb-3">
+                    <input class="form-check-input" type="radio" name="radio" value="id" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        ID
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio" value="nomeCliente">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Nome do Cliente
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group me-3 mb-3">
+                <input type="text" placeholder="Busca" class="form-control" name="itemBusca">
+                <button type="submit" class="btn btn-outline-secondary me-3" formaction="busca">Pesquisar</button>
+            </div>
+        </form>
+        <div class="card-header alert-warning mt-3" th:if="${clientes.size() == 0 }">Ops! Consulta não retornou resultados!</div>
+        <div class="card mt-3 " th:each="cliente : ${clientes}">
+            <form method="POST">
+                <div class="card-header alert-success" name="id" th:text="${cliente.id}">ID</div>
+                <div class="me-3 ms-3">
+                    <div class="mb-1 mt-1 ">Nome</div>
+                    <div class=" col-12 d-flex">
+                        <input class="form-control" name="novoNome" th:value="${cliente.nomeCliente}" />
+                        <input hidden name="id" th:value="${cliente.id}" />
+                        <button type=submit class="btn btn-primary ms-3 col-2" formaction="alterar">Alterar
+                            nome</button>
+                        <button type=submit class="btn btn-primary ms-3" formaction="deletar">Deletar</button>
+                    </div>
+
+                    <div class="mb-3 d-flex">
+                        <div class="me-3 col-1">
+                            <div class="mb-1 mt-1">Sexo</div>
+                            <input readonly class="form-control" th:value="${cliente.sexo}" value="sexo" />
+                        </div>
+
+                        <div class="me-3">
+                            <div class="mb-1 mt-1">Data de Nascimento</div>
+                            <input readonly class="form-control"
+                                th:value="${#temporals.format(cliente.dataNascimento, 'dd/MM/yyyy')}" value="sexo" />
+                        </div>
+
+                        <div class="me-3 col-2">
+                            <div class="mb-1 mt-1 col-3">Idade</div>
+                            <input readonly class="form-control" th:value="${cliente.idade}" value="idade" />
+                        </div>
+
+                        <div class="me-3">
+                            <div class="mb-1 mt-1">Cidade</div>
+                            <input readonly class="form-control" th:value="${cliente.cidade}" value="cidade" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html>
+
+<head th:replace="~{base :: head}"></head>
+<title>Consultar cidades</title>
+<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+
+<body>
+
+
+    <div class="container">
+        <div th:replace="~{base :: titulo('Consulta de cidades')}"></div>
+        <nav th:replace="~{base :: buttons}"></nav>
+
+            <form action="busca" method="POST" class="form-control me-3">
+                <div class="d-flex mt-3">
+                    <div class="form-check me-3 mb-3">
+                        <input class="form-check-input" type="radio" name="radio" value="nomeCidade" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Nome da Cidade
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radio" value="estado">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Estado
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group me-3 mb-3">
+                    <input type="text" placeholder="Busca" class="form-control" name="itemBusca">
+                    <button type="submit" class="btn btn-outline-secondary me-3" formaction="busca">Pesquisar</button>
+                </div>
+            </form>
+
+            <div class="card-header alert-warning" th:if="${cidades.size() == 0 }">Ops! Consulta não retornou resultados!
+            </div>
+            <div class="card mb-3" th:each="cidade : ${cidades}">
+                <div class="card-header alert-success" name="id" th:text="${cidade.id}">ID</div>
+                <div class="me-3 ms-3">
+                    <div class="mb-1 mt-1 ">Nome</div>
+                    <div class=" col-12 d-flex">
+                        <input readonly class="form-control" th:value="${cidade.nomeCidade}" />
+                    </div>
+                    <div class="mb-1 mt-1">Estado</div>
+                    <div class="mb-3 d-flex">
+                        <input readonly class="form-control" th:value="${cidade.estado}" />
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</body>
+
+</html>

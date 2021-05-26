@@ -1,0 +1,60 @@
+<html>
+
+<head th:replace="~{base :: head}"></head>
+<title>Cadastrar novo cliente</title>
+<body>
+    <div class="container">
+        <div th:replace="~{base :: titulo('Novo Cliente')}"></div>
+        <nav th:replace="~{base :: buttons}"></nav>
+        <div class="card mt-3">
+            <div class="card-body">
+                <form th:object="${requisicaoNovoCliente}" action="/cliente/novo" method="POST">
+                    <div class="d-flex">
+                        <div class="form-floating col-5 me-3">
+                            <input th:field="*{nomeCliente}" th:errorclass="is-invalid" class="form-control mb-3"
+                                placeholder="Nome do Cliente" />
+                            <label for="nomeCliente">Nome do Cliente</label>
+                            <div class="invalid-feedback" th:errors="*{nomeCliente}">
+                                Campo não pode estar em branco!
+                            </div>
+                        </div>
+                        <div class="form-floating col-5 ">
+                            <input type="date" th:field="*{dataNascimento}" th:errorclass="is-invalid"
+                                class="form-control mb-3" placeholder="Data de nascimento" />
+                            <label for="dataNascimento">Data de nascimento</label>
+                            <div class="invalid-feedback" th:errors="*{dataNascimento}">
+                                Campo não pode estar em branco!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="col-5 me-3">
+                            <select class="form-select" th:field="*{sexo}" th:errorclass="is-invalid">
+                                <option value="null" selected disabled>Selecione o sexo</option>
+                                <option value="M">M</option>
+                                <option value="F">F</option>
+                            </select>
+                            <div class="invalid-feedback" th:errors="*{sexo}">
+                                Campo não pode estar em branco!
+                            </div>
+                        </div>
+                        <div class="col-5 me-3" }>
+                            <select class="form-select" th:field="*{cidade}" th:errorclass="is-invalid">
+                                <option value="null" selected disabled>Selecione a cidade</option>
+                                <div th:each="cidade : ${cidades}">
+                                    <option th:value="${cidade.nomeCidade}" th:text="${cidade.nomeCidade + ' - ' + cidade.estado}">Cidade</option>
+                                </div>
+                            </select>
+                            <div class="invalid-feedback" th:errors="*{cidade}">
+                                Campo não pode estar em branco!
+                            </div>
+                        </div>
+                    </div>
+                    <button type=submit class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
