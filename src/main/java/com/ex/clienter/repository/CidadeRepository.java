@@ -9,11 +9,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long>{
-
+    
     List<Cidade> findByNomeCidade(String item);
 
     List<Cidade> findByEstado(String item);
-
-
     
 }

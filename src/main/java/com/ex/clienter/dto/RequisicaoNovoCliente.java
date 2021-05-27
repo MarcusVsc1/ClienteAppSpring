@@ -18,6 +18,7 @@ public class RequisicaoNovoCliente {
     @NotBlank
     private String dataNascimento;
 
+    @NotBlank
     private String cidade;
 
     public String getNomeCliente() {
