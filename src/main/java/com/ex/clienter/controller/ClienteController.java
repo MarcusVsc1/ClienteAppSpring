@@ -72,7 +72,11 @@ public class ClienteController {
 		}
 		else {	
 			clientes = new ArrayList<Cliente>();
-			clientes.add(clienteRepository.findById(Long.parseLong(itemBusca)).get());
+			try {
+				clientes.add(clienteRepository.findById(Long.parseLong(itemBusca)).get());
+			} catch (NumberFormatException e) {
+
+			}
 		}
 	    ModelAndView mv = new ModelAndView("cliente/consulta");
 	    mv.addObject("clientes", clientes);
