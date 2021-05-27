@@ -14,7 +14,7 @@
                             <input th:field="*{nomeCliente}" th:errorclass="is-invalid" class="form-control mb-3"
                                 placeholder="Nome do Cliente" />
                             <label for="nomeCliente">Nome do Cliente</label>
-                            <div class="invalid-feedback" th:errors="*{nomeCliente}">
+                            <div class="invalid-feedback  mb-3" th:errors="*{nomeCliente}">
                                 Campo não pode estar em branco!
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                             <input type="date" th:field="*{dataNascimento}" th:errorclass="is-invalid"
                                 class="form-control mb-3" placeholder="Data de nascimento" />
                             <label for="dataNascimento">Data de nascimento</label>
-                            <div class="invalid-feedback" th:errors="*{dataNascimento}">
+                            <div class="invalid-feedback  mb-3" th:errors="*{dataNascimento}">
                                 Campo não pode estar em branco!
                             </div>
                         </div>

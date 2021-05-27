@@ -32,7 +32,7 @@
         </form>
         <div class="card-header alert-warning mt-3" th:if="${clientes.size() == 0 }">Ops! Consulta não retornou resultados!</div>
         <div class="card mt-3 " th:each="cliente : ${clientes}">
-            <form method="POST">
+            <form th:object="${requisicaoNovoCliente}" method="POST">
                 <div class="card-header alert-success" name="id" th:text="${cliente.id}">ID</div>
                 <div class="me-3 ms-3">
                     <div class="mb-1 mt-1 ">Nome</div>

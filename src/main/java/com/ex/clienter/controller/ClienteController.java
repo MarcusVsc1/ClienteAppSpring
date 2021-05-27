@@ -71,7 +71,7 @@ public class ClienteController {
 			clientes = clienteRepository.findByNomeCliente(itemBusca);
 		}
 		else {	
-			clientes = new ArrayList();
+			clientes = new ArrayList<Cliente>();
 			clientes.add(clienteRepository.findById(Long.parseLong(itemBusca)).get());
 		}
 	    ModelAndView mv = new ModelAndView("cliente/consulta");
@@ -81,6 +81,8 @@ public class ClienteController {
 
 	@PostMapping("/alterar")
 	public String alterar(String novoNome, String id) {
+		
+
 		Cliente novo = clienteRepository.findById(Long.parseLong(id)).get();
 		novo.setNomeCliente(novoNome);
 		clienteRepository.save(novo);

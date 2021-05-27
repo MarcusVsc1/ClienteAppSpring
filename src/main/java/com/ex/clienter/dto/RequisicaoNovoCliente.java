@@ -5,7 +5,6 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import com.ex.clienter.model.Cliente;
 

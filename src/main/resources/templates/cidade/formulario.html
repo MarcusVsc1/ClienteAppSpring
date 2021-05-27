@@ -14,7 +14,7 @@
                             <input th:field="*{nomeCidade}" th:errorclass="is-invalid" class="form-control mb-3"
                                 placeholder="Nome da Cidade" />
                             <label for="nomeCidade">Nome da cidade</label>
-                            <div class="invalid-feedback" th:errors="*{nomeCidade}">
+                            <div class="invalid-feedback mb-3" th:errors="*{nomeCidade}">
                                 Campo não pode estar em branco!
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <option value="SE">SE</option>
                                 <option value="TO">TO</option>
                             </select>
-                            <div class="invalid-feedback" th:errors="*{estado}">
+                            <div class="invalid-feedback  mb-3" th:errors="*{estado}">
                                 Campo não pode estar em branco!
                             </div>
                         </div>
