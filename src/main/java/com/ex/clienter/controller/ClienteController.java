@@ -74,9 +74,7 @@ public class ClienteController {
 			clientes = new ArrayList<Cliente>();
 			try {
 				clientes.add(clienteRepository.findById(Long.parseLong(itemBusca)).get());
-			} catch (NumberFormatException e) {
-
-			}
+				} catch (Exception e) {}
 		}
 	    ModelAndView mv = new ModelAndView("cliente/consulta");
 	    mv.addObject("clientes", clientes);
