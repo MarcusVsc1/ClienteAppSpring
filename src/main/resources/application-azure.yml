@@ -1,0 +1,5 @@
+blob:
+  storage:
+    endpoint: https://sistemasdistribuidos.blob.core.windows.net/
+  container:
+    directory: diretorioblob

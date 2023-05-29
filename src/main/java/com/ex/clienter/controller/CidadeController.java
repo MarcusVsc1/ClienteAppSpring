@@ -9,12 +9,14 @@ import com.ex.clienter.dto.RequisicaoNovoCliente;
 import com.ex.clienter.model.Cidade;
 import com.ex.clienter.repository.CidadeRepository;
 
+import com.ex.clienter.util.BlobUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,6 +25,9 @@ public class CidadeController {
     
     @Autowired
     private CidadeRepository cidadeRepository;
+
+	@Autowired
+	private BlobUtils blobUtils;
 
     @GetMapping("formulario")
 	public ModelAndView formulario(RequisicaoNovaCidade requisicao) {
@@ -38,6 +43,7 @@ public class CidadeController {
 		
 		Cidade cidade = requisicao.toCidade();
 		cidadeRepository.save(cidade);
+		blobUtils.salvarMensagemSucessoBlob(cidade);
 		return "redirect:/home";
 	}
 
