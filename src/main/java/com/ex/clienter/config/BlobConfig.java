@@ -21,13 +21,14 @@ public class BlobConfig {
     @Value("${blob.container.directory}")
     private String directory;
 
+    @Value("${blob.storage.connection}")
+    private String connectionString;
+
     @Bean
     public BlobContainerClient blobContainerClientConfig() {
         return new BlobServiceClientBuilder()
                 .endpoint(storageEndpoint)
-                .credential(new DefaultAzureCredentialBuilder()
-                        .authorityHost(AzureAuthorityHosts.AZURE_GOVERNMENT)
-                        .build())
+                .sasToken(connectionString)
                 .buildClient()
                 .getBlobContainerClient(directory);
     }
