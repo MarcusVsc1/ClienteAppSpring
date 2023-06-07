@@ -1,6 +1,6 @@
 blob:
   storage:
     endpoint: https://sistemasdistribuidos.blob.core.windows.net/
-    connection: sp=r&st=2023-06-07T23:39:50Z&se=2023-06-08T07:39:50Z&spr=https&sv=2022-11-02&sr=c&sig=OdHdUQqXMrS02I2PuUda7U1QAsnN0UOTBfBqHAPA0%2F8%3D
+    connection: sp=racwdli&st=2023-06-07T23:39:50Z&se=2023-06-08T07:39:50Z&spr=https&sv=2022-11-02&sr=c&sig=V15x6Ko3TDYb8VfuucmK1udWs1kB6f01t%2BuWOZnTV%2Fc%3D
   container:
     directory: diretorioblob
